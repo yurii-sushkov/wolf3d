@@ -6,7 +6,7 @@
 #    By: ysushkov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/11 13:23:23 by ysushkov          #+#    #+#              #
-#    Updated: 2018/08/06 11:04:58 by ysushkov         ###   ########.fr        #
+#    Updated: 2018/08/06 12:09:06 by ysushkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ OBJ		:=		$(SRC:.c=.o)
 
 LIB		:=		./libft/libft.a
 
-MLX		:=		-lmlx -framework OpenGL -framework AppKit
+MLX		:=		-L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 all:		$(NAME)
 
