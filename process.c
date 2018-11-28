@@ -69,7 +69,7 @@ void	process(t_wolf *w)
 	w->oldmy = w->y / 2;
 	w->sw = 0;
 	load_tex(w);
-	if (OS == 1)
+	if (OS == 0)
 		system("afplay audio/target.mp3 &");
 	build(w);
 }

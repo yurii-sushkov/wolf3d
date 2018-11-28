@@ -33,7 +33,7 @@ void	forwardback(int key, t_wolf *w)
 	}
 	i++;
 	if (i % 10 == 0)
-		OS == 1 ? system("aplay audio/step.wav &") : system("afplay audio/step.wav &");
+		OS == 1 ? system("aplay -q audio/step.wav &") : system("afplay audio/step.wav &");
 	if (i == 1000)
 		i = 0;
 }
@@ -62,7 +62,7 @@ void	leftright(int key, t_wolf *w)
 	}
 	i++;
 	if (i % 15 == 0)
-		OS == 1 ? system("aplay audio/step.wav &") : system("afplay audio/step.wav &");
+		OS == 1 ? system("aplay -q audio/step.wav &") : system("afplay audio/step.wav &");
 	if (i == 1000)
 		i = 0;
 }
