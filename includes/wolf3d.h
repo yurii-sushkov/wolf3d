@@ -14,7 +14,11 @@
 # define WOLF3D_H
 # include "../libft/libft.h"
 # include <math.h>
-# include "../minilibx_macos/mlx.h"
+# ifdef __APPLE__
+#  include "../minilibx_macos/mlx.h"
+# elif __linux__
+#  include "../minilibx/mlx.h"
+# endif
 # include <fcntl.h>
 # include <sys/types.h>
 # include <time.h>

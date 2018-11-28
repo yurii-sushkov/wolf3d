@@ -23,18 +23,24 @@ OBJ		:=		$(SRC:.c=.o)
 
 LIB		:=		./libft/libft.a
 
-MLX		:=		-L minilibx_macos -lmlx -framework OpenGL -framework AppKit
+OS		:=		$(shell uname -s)
+
+ifeq ($(OS), Darwin)
+	MLX		:=		-L minilibx_macos -lmlx -framework OpenGL -framework AppKit
+else
+	MLX		:=		-L./libft -L./minilibx -lft -lm -lmlx -lXext -lX11 -lbsd -g3
+endif
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			@make -C libft
-			@gcc $(FLAGS) -I $(HEAD) -c $(SRC)
-			@gcc $(FLAGS) $(LIB) $(MLX) -o $(NAME) $(OBJ)
+			@clang $(FLAGS) -I $(HEAD) -c $(SRC)
+			@clang $(FLAGS) $(LIB) $(MLX) -o $(NAME) $(OBJ)
 			@echo "\033[92mDONE\033[0m"
 
 $(OBJ):		%.o: %.c
-			gcc $(FLAGS) -I $(HEAD) -c $< -o $@
+			clang $(FLAGS) -I $(HEAD) -c $< -o $@
 
 clean:
 			@make -C libft clean

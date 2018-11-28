@@ -32,12 +32,12 @@ HEADER = libft.h
 all: $(NAME)
 
 $(NAME):	$(OBJ)
-	@gcc -Wall -Werror -Wextra -c $(SRC) -I $(HEADER)
+	@clang -Wall -Werror -Wextra -c $(SRC) -I $(HEADER)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
 $(OBJ): %.o: %.c
-		gcc -c -Wall -Werror -Wextra $< -o $@
+		clang -c -Wall -Werror -Wextra $< -o $@
 
 clean:
 	@/bin/rm -f $(OBJ)

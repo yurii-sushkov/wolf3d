@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "includes/wolf3d.h"
+#include <math.h>
 
 void	forwardback(int key, t_wolf *w)
 {
