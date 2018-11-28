@@ -27,17 +27,17 @@ SRC = ft_memset.c ft_bzero.c ft_memcpy.c ft_memccpy.c ft_memmove.c ft_memchr.c \
 
 OBJ = $(SRC:.c=.o)
 
-HEADER = libft.h
+HEADER = . # libft.h
 
 all: $(NAME)
 
 $(NAME):	$(OBJ)
-	@clang -Wall -Werror -Wextra -c $(SRC) -I $(HEADER)
+	@cc -Wall -Werror -Wextra -c $(SRC) -I $(HEADER)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
 $(OBJ): %.o: %.c
-		clang -c -Wall -Werror -Wextra $< -o $@
+		cc -c -Wall -Werror -Wextra $< -o $@
 
 clean:
 	@/bin/rm -f $(OBJ)

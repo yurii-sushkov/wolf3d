@@ -15,14 +15,16 @@
 int		exit_y(void *par)
 {
 	par = NULL;
-	system("killall -9 afplay");
+	if (OS == 0)
+		system("killall -9 afplay");
 	exit(1);
 	return (0);
 }
 
 int		exit_x(t_wolf *par)
 {
-	system("killall -9 afplay");
+	if (OS == 0)
+		system("killall -9 afplay");
 	mlx_destroy_image(par->mlx, par->img);
 	exit(1);
 	return (0);

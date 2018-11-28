@@ -31,8 +31,6 @@ void	build(t_wolf *w)
 
 	c = 0;
 	x = -1;
-	w->time = clock() / CLOCKS_PER_SEC;
-
 	while (x++ < w->ww)
 	{
 		initializer(w, x);
@@ -71,6 +69,7 @@ void	process(t_wolf *w)
 	w->oldmy = w->y / 2;
 	w->sw = 0;
 	load_tex(w);
-	//system("afplay audio/target.mp3 &");
+	if (OS == 1)
+		system("afplay audio/target.mp3 &");
 	build(w);
 }

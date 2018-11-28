@@ -33,8 +33,7 @@ void	forwardback(int key, t_wolf *w)
 	}
 	i++;
 	if (i % 10 == 0)
-		ft_putendl("step");
-		//system("afplay audio/step.wav &");
+		OS == 1 ? system("aplay audio/step.wav &") : system("afplay audio/step.wav &");
 	if (i == 1000)
 		i = 0;
 }
@@ -63,15 +62,14 @@ void	leftright(int key, t_wolf *w)
 	}
 	i++;
 	if (i % 15 == 0)
-		ft_putendl("step");
-		//system("afplay audio/step.wav &");
+		OS == 1 ? system("aplay audio/step.wav &") : system("afplay audio/step.wav &");
 	if (i == 1000)
 		i = 0;
 }
 
 void	rotation(int key, t_wolf *w)
 {
-	if (key == 12 || key == KEY_LEFT)
+	if (key == KEY_Q || key == KEY_LEFT)
 	{
 		w->k.olddirx = w->dirx;
 		w->dirx = w->dirx * cos(-0.1) - w->diry * sin(-0.1);
@@ -80,7 +78,7 @@ void	rotation(int key, t_wolf *w)
 		w->planex = w->planex * cos(-0.1) - w->planey * sin(-0.1);
 		w->planey = w->k.oldplanex * sin(-0.1) + w->planey * cos(-0.1);
 	}
-	else if (key == 14 || key == KEY_RIGHT)
+	else if (key == KEY_E || key == KEY_RIGHT)
 	{
 		w->k.olddirx = w->dirx;
 		w->dirx = w->dirx * cos(0.1) - w->diry * sin(0.1);
@@ -96,7 +94,8 @@ int		finalescaper(int key, t_wolf *w)
 	if (key == KEY_ESC)
 	{
 		w = NULL;
-		//system("killall -9 afplay");
+		if (OS == 0)
+			system("killall -9 afplay");
 		key = 0;
 		exit(1);
 		return (0);
@@ -109,17 +108,18 @@ int		deal_key(int key, t_wolf *w)
 	if (key == KEY_ESC)
 	{
 		mlx_destroy_image(w->mlx, w->img);
-		//system("killall -9 afplay");
+		if (OS == 0)
+			system("killall -9 afplay");
 		exit(1);
 		return (0);
 	}
-	if (key == 13 || key == 126 || key == 1 || key == 125)
+	if (key == KEY_W || key == KEY_UP || key == KEY_S || key == KEY_DOWN)
 		forwardback(key, w);
-	else if (key == 0 || key == 2)
+	else if (key == KEY_A || key == KEY_D)
 		leftright(key, w);
-	else if (key == 12 || key == 123 || key == 14 || key == 124)
+	else if (key == KEY_Q || key == KEY_LEFT || key == KEY_E || key == KEY_RIGHT)
 		rotation(key, w);
-	if (key == 36)
+	if (key == KEY_ENTER)
 	{
 		if (w->sw == 0)
 			w->sw = 1;
