@@ -26,8 +26,8 @@ static size_t	k_count(const char *s, size_t k)
 
 	while (s[k] != '\0')
 	{
-		if ((s[k] >= 33 && s[k] <= 127 && ft_iswhite(s[k + 1]) == 1) ||
-			(s[k] >= 33 && s[k] <= 127 && s[k + 1] == '\0'))
+		if ((s[k] >= 33 && s[k] < 127 && ft_iswhite(s[k + 1]) == 1) ||
+			(s[k] >= 33 && s[k] < 127 && s[k + 1] == '\0'))
 			x = k + 1;
 		k++;
 	}

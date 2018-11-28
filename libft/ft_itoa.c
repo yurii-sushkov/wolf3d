@@ -48,6 +48,9 @@ char		*ft_itoa(int n)
 	}
 	i[2]--;
 	while (i[2] >= i[1])
-		(s[i[2]--] = num % 10 + '0') && (num /= 10);
+	{
+		s[i[2]--] = num % 10 + '0';
+		num /= 10;
+	}
 	return (s);
 }
