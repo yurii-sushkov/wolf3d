@@ -17,14 +17,14 @@ void	forwardback(int key, t_wolf *w)
 {
 	static int i = 0;
 
-	if (key == 13 || key == 126)
+	if (key == KEY_W || key == KEY_UP)
 	{
 		if (w->arr[(int)(w->posx + w->dirx * 0.2)][(int)w->posy] == 0)
 			w->posx += w->dirx * 0.1;
 		if (w->arr[(int)w->posx][(int)(w->posy + w->diry * 0.2)] == 0)
 			w->posy += w->diry * 0.1;
 	}
-	else if (key == 1 || key == 125)
+	else if (key == KEY_S || key == KEY_DOWN)
 	{
 		if (w->arr[(int)(w->posx - w->dirx * 0.2)][(int)w->posy] == 0)
 			w->posx -= w->dirx * 0.1;
@@ -33,7 +33,8 @@ void	forwardback(int key, t_wolf *w)
 	}
 	i++;
 	if (i % 10 == 0)
-		system("afplay audio/step.wav &");
+		ft_putendl("step");
+		//system("afplay audio/step.wav &");
 	if (i == 1000)
 		i = 0;
 }
@@ -42,7 +43,7 @@ void	leftright(int key, t_wolf *w)
 {
 	static int i = 0;
 
-	if (key == 0)
+	if (key == KEY_A)
 	{
 		if (w->arr[(int)(w->posx + w->dirx * cos(-1.5708) -
 						w->diry * sin(-1.5708) * 0.1)][(int)w->posy] == 0)
@@ -51,7 +52,7 @@ void	leftright(int key, t_wolf *w)
 				w->dirx * sin(-1.5708) * 0.1 + w->diry * cos(-1.5708))] == 0)
 			w->posy += (w->dirx * sin(-1.5708) + w->diry * cos(-1.5708)) * 0.05;
 	}
-	else if (key == 2)
+	else if (key == KEY_D)
 	{
 		if (w->arr[(int)(w->posx + w->dirx * cos(1.5708) -
 						w->diry * sin(1.5708) * 0.1)][(int)w->posy] == 0)
@@ -62,14 +63,15 @@ void	leftright(int key, t_wolf *w)
 	}
 	i++;
 	if (i % 15 == 0)
-		system("afplay audio/step.wav &");
+		ft_putendl("step");
+		//system("afplay audio/step.wav &");
 	if (i == 1000)
 		i = 0;
 }
 
 void	rotation(int key, t_wolf *w)
 {
-	if (key == 12 || key == 123)
+	if (key == 12 || key == KEY_LEFT)
 	{
 		w->k.olddirx = w->dirx;
 		w->dirx = w->dirx * cos(-0.1) - w->diry * sin(-0.1);
@@ -78,7 +80,7 @@ void	rotation(int key, t_wolf *w)
 		w->planex = w->planex * cos(-0.1) - w->planey * sin(-0.1);
 		w->planey = w->k.oldplanex * sin(-0.1) + w->planey * cos(-0.1);
 	}
-	else if (key == 14 || key == 124)
+	else if (key == 14 || key == KEY_RIGHT)
 	{
 		w->k.olddirx = w->dirx;
 		w->dirx = w->dirx * cos(0.1) - w->diry * sin(0.1);
@@ -91,10 +93,10 @@ void	rotation(int key, t_wolf *w)
 
 int		finalescaper(int key, t_wolf *w)
 {
-	if (key == 53)
+	if (key == KEY_ESC)
 	{
 		w = NULL;
-		system("killall -9 afplay");
+		//system("killall -9 afplay");
 		key = 0;
 		exit(1);
 		return (0);
@@ -104,10 +106,10 @@ int		finalescaper(int key, t_wolf *w)
 
 int		deal_key(int key, t_wolf *w)
 {
-	if (key == 53)
+	if (key == KEY_ESC)
 	{
 		mlx_destroy_image(w->mlx, w->img);
-		system("killall -9 afplay");
+		//system("killall -9 afplay");
 		exit(1);
 		return (0);
 	}
