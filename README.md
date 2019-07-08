@@ -6,9 +6,11 @@
 
   Example: ./wolf3d maps/03
 
-# ubuntu
+# ubuntu 18.04
 
   run:
+
+  sudo apt update && sudo apt upgrade -y
 
   sh compile-linux.sh
 
