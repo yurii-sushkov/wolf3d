@@ -6,7 +6,7 @@
 
   sh compile-linux.sh
 
-  Then run binary with arguments.
+  Then you can run binary with arguments.
 
   Example: ./wolf3d maps/02
 
