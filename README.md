@@ -2,11 +2,11 @@
 
   run:
 
-  sudo apt update && sudo apt upgrade -y
+  `sudo apt update && sudo apt upgrade -y
 
-  sh compile-linux.sh
+  sh compile-linux.sh`
 
   Then you can run binary with arguments.
 
-  Example: ./wolf3d maps/02
+  Example: `./wolf3d maps/02`
 
